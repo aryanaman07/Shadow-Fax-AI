@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShadowPrompt</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="popup-container">
+        <header class="header">
+            <h1 class="logo">ShadowPrompt</h1>
+            <label class="switch">
+                <input type="checkbox" id="protectionToggle" checked>
+                <span class="slider round"></span>
+            </label>
+        </header>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <span class="stat-label">Scanned Today</span>
+                <span id="scannedCount" class="stat-value">1,204</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-label text-warning">Sensitive</span>
+                <span id="sensitiveCount" class="stat-value text-warning">42</span>
+            </div>
+            <div class="stat-card full-width">
+                <span class="stat-label text-critical">Critical Blocked</span>
+                <span id="criticalCount" class="stat-value text-critical">2</span>
+            </div>
+        </div>
+
+        <button id="openDashboard" class="btn-primary">View Full Dashboard</button>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>
