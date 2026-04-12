@@ -2,32 +2,19 @@
   "manifest_version": 3,
   "name": "ShadowPrompt",
   "version": "1.0",
-  "description": "Privacy Firewall for AI Prompts",
-  "permissions": ["activeTab", "scripting"],
-  "host_permissions": [
-    "https://chat.openai.com/*",
-    "https://chatgpt.com/*"
-  ],
-  "background": {
-    "service_worker": "background.js"
-  },
-  "action": {
-    "default_title": "ShadowPrompt",
-    "default_icon": {
-      "16": "icons/icon16.png",
-      "48": "icons/icon48.png",
-      "128": "icons/icon128.png"
-    }
-  },
+  "permissions": ["scripting"],
+  "host_permissions": ["https://chatgpt.com/*"],
   "content_scripts": [
     {
-      "matches": [
-        "https://chat.openai.com/*",
-        "https://chatgpt.com/*"
-      ],
+      "matches": ["https://chatgpt.com/*"],
       "js": ["content.js"],
-      "css": ["content.css"],
       "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources":[
+    {
+      "resources": ["injected.js"],
+      "matches": ["https://chatgpt.com/*"]
     }
   ]
 }

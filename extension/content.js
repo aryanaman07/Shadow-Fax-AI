@@ -1,14 +1,17 @@
-console.log("ShadowPrompt: content script loaded");
+alert("ShadowPrompt content is running");
+console.log("ShadowPrompt content script loaded");
 
-// sanity check: try to access DOM
-window.addEventListener("load", () => {
-    console.log("ShadowPrompt: page fully loaded");
+// Inject script into page context
+const script = document.createElement("script");
+script.src = chrome.runtime.getURL("injected.js");
+script.onload = () => 
+  {
+    console.log("Injected script appended successfully");
+    script.remove();
+  };
+script.onerror = () =>
+{
+  console.error("FAILEd to load injected.js");
+};
 
-    const textarea = document.querySelector("textarea");
-
-    if (textarea) {
-        console.log("ShadowPrompt: Found input box");
-    } else {
-        console.log("ShadowPrompt: Input box not found");
-    }
-});
+(document.head || document.documentElement).appendChild(script);
